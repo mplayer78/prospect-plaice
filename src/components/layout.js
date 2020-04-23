@@ -5,12 +5,21 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useReducer } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import reducer from "../state/reducer"
+import Context from "../state/context"
+import initialState from "../state/initialState"
+
 import Header from "./header"
 import "./layout.css"
+import styled from "styled-components"
+
+const StyledBody = styled.div`
+  display: flex;
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -22,25 +31,20 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
+  let [state, dispatch] = useReducer(reducer, initialState)
   return (
-    <>
+    <Context.Provider value={{ state, dispatch }}>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
+      <div>
+        <StyledBody>{children}</StyledBody>
         <footer>
-          © {new Date().getFullYear()}, Built with
+          © {new Date().getFullYear()}, Built by{" "}
+          <a href="https://www.mattplayer.dev">Matt Player</a> with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </Context.Provider>
   )
 }
 

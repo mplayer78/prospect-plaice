@@ -1,35 +1,28 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useContext } from "react"
+import Context from "../state/context"
+import FullHeader from "./FullHeader"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
+const Header = ({ siteTitle }) => {
+  const { state, dispatch } = useContext(Context)
+  return (
+    <header
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+        margin: `1.45rem`,
+        padding: `1.45rem`,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        borderBottom: "solid 2px #666666",
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+      <FullHeader />
+      <h2>Prospect Place, Sidmouth EX10 8AS, England</h2>
+      <h2>+44 1395 519328</h2>
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
