@@ -5,6 +5,10 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
+import { loadStripe } from "@stripe/stripe-js"
+
+// const stripe = await loadStripe("pk_test_0SQ8GinoLukRCJ7EgPbpjkDx00I1EdBxIH")
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
