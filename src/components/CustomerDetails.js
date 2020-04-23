@@ -7,11 +7,12 @@ import Context from "../state/context"
 const CustomerDetails = props => {
   const { state, dispatch } = useContext(Context)
   let formValidated =
+    !!state.collectionSlot &&
     state.itemList.length > 0 &&
-    state.timeSlot &&
     state.customerName.length > 0 &&
     state.customerPhoneNo.length > 0 &&
     state.customerEmail.length > 0
+  console.log("formValidated", formValidated)
   return (
     <BodyContainer>
       <BodyHeader>Customer Details</BodyHeader>

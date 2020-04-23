@@ -36,6 +36,13 @@ function reducer(state, action) {
         ...state,
         [action.name]: action.value,
       }
+    case "book_collection_slot":
+      let date = new Date()
+      console.log("date", date)
+      return {
+        ...state,
+        collectionSlot: new Date(),
+      }
     default:
       return state
   }

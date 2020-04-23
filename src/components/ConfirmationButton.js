@@ -28,8 +28,8 @@ const ConfirmationButton = ({ disabled }) => {
     const stripe = await stripePromise
     const { error } = await stripe.redirectToCheckout({
       items: state.itemList,
-      successUrl: `${window.location.origin}/orderSuccess/`,
-      cancelUrl: `${window.location.origin}/advanced`,
+      successUrl: `${window.location.origin}/orderSuccess`,
+      cancelUrl: `${window.location.origin}/orderCancelled`,
     })
 
     if (error) {

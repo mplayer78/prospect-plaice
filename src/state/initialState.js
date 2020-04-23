@@ -1,7 +1,7 @@
 const initialState = {
   itemList: [],
   totalCost: 0,
-  timeSlot: null,
+  collectionSlot: undefined,
   customerName: "",
   customerPhoneNo: "",
   customerEmail: "",

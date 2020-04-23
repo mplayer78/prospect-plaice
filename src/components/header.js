@@ -18,8 +18,10 @@ const Header = ({ siteTitle }) => {
       }}
     >
       <FullHeader />
-      <h2>Prospect Place, Sidmouth EX10 8AS, England</h2>
-      <h2>+44 1395 519328</h2>
+      <h2 style={{ fontWeight: "400" }}>
+        Prospect Place, Sidmouth EX10 8AS, England
+      </h2>
+      <h2 style={{ fontWeight: "400" }}>+44 1395 519328</h2>
     </header>
   )
 }

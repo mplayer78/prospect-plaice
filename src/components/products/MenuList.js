@@ -19,7 +19,6 @@ const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
 const MenuList = () => {
   const { state, dispatch } = useContext(Context)
-  console.log("state", state)
   return (
     <StaticQuery
       query={graphql`

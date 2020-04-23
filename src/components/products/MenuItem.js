@@ -37,7 +37,6 @@ const formatPrice = (amount, currency) => {
 
 const MenuItem = ({ sku, stripePromise }) => {
   const { state, dispatch } = useContext(Context)
-  console.log("state", state)
   const redirectToCheckout = async (event, sku, quantity = 1) => {
     event.preventDefault()
     const stripe = await stripePromise
