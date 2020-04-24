@@ -1,0 +1,16 @@
+type Order {
+  items: [Item]
+  customerName: String
+}
+
+type Item {
+  sku: String
+  name: String
+  order: Order
+  quantity: Int
+}
+
+type Query {
+  allOrders: [Order]
+  allItems: [Item]
+}
