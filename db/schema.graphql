@@ -1,19 +1,21 @@
 type Order {
-  items: [Item]
+  items: [Item] @relation
+  customerEmail: String
   customerName: String
+  customerPhoneNo: String
   collection: CollectionSlot
 }
 
 type Item {
   sku: String
   name: String
-  order: Order
+  order: Order @relation
   quantity: Int
+  price: Int
 }
 
 type CollectionSlot {
   date: String
-  time: Int
   order: Order
 }
 

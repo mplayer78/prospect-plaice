@@ -7,6 +7,7 @@ import styled from "styled-components"
 import BodyContainer from "../../layout/BodyContainer"
 import BodyHeader from "../../layout/BodyHeader"
 import TotalBox from "./TotalBox"
+import updateDb from "../../../db/updateDb"
 
 const containerStyles = {
   display: "flex",
@@ -24,7 +25,7 @@ const MenuList = () => {
     <StaticQuery
       query={graphql`
         query SkusForProduct {
-          skus: allStripeSku(sort: { fields: [price] }) {
+          skus: allStripeSku {
             edges {
               node {
                 id
@@ -43,15 +44,18 @@ const MenuList = () => {
           }
         }
       `}
-      render={({ skus }) => (
-        <BodyContainer>
-          <BodyHeader>takeaway menu</BodyHeader>
-          {skus.edges.map(({ node: sku }) => (
-            <MenuItem key={sku.id} sku={sku} stripePromise={stripePromise} />
-          ))}
-          <TotalBox />
-        </BodyContainer>
-      )}
+      render={({ skus }) => {
+        // updateDb(skus)
+        return (
+          <BodyContainer>
+            <BodyHeader>takeaway menu</BodyHeader>
+            {skus.edges.map(({ node: sku }) => (
+              <MenuItem key={sku.id} sku={sku} stripePromise={stripePromise} />
+            ))}
+            <TotalBox />
+          </BodyContainer>
+        )
+      }}
     />
   )
 }

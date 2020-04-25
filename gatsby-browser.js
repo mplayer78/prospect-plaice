@@ -17,20 +17,20 @@ const client = new ApolloClient({
   }),
 })
 
-client
-  .query({
-    query: gql`
-      {
-        allItems {
-          data {
-            name
-            sku
-          }
-        }
-      }
-    `,
-  })
-  .then(result => console.log(result))
+// client
+//   .query({
+//     query: gql`
+//       {
+//         allItems {
+//           data {
+//             name
+//             sku
+//           }
+//         }
+//       }
+//     `,
+//   })
+//   .then(result => console.log(result))
 
 // Wraps every page in a component
 export const wrapPageElement = ({ element, props }) => {

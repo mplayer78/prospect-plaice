@@ -15,7 +15,6 @@ const NavButton = styled.button`
 
 const DayNavigator = props => {
   const { state, dispatch } = useContext(Context)
-  console.log("state", state)
   return (
     <DayNavigatorStyled>
       <NavButton onClick={() => dispatch({ type: "decrement_selected_day" })}>

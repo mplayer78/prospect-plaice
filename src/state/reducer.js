@@ -9,7 +9,12 @@ function reducer(state, action) {
         foundItemIndex < 0
           ? [
               ...state.itemList,
-              { sku: action.sku, price: action.price, quantity: 1 },
+              {
+                sku: action.sku,
+                price: action.price,
+                name: action.name,
+                quantity: 1,
+              },
             ]
           : state.itemList.map((v, i) =>
               i === foundItemIndex ? { ...v, quantity: v.quantity + 1 } : v
