@@ -1,8 +1,11 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import { Link } from "gatsby"
+import { getConfirmation } from "../js/get-confirmation"
 
-const orderSuccess = props => {
+const OrderSuccess = props => {
+  const [confirmationData, setConfirmationData] = useState({})
+  getConfirmation().then(result => setConfirmationData(result))
   return (
     <Layout>
       <h1>Order Successful</h1>
@@ -11,4 +14,4 @@ const orderSuccess = props => {
   )
 }
 
-export default orderSuccess
+export default OrderSuccess

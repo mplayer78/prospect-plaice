@@ -6,6 +6,7 @@ import Context from "../../state/context"
 import styled from "styled-components"
 import BodyContainer from "../../layout/BodyContainer"
 import BodyHeader from "../../layout/BodyHeader"
+import TotalBox from "./TotalBox"
 
 const containerStyles = {
   display: "flex",
@@ -32,6 +33,11 @@ const MenuList = () => {
                 attributes {
                   name
                 }
+                product {
+                  metadata {
+                    description
+                  }
+                }
               }
             }
           }
@@ -43,6 +49,7 @@ const MenuList = () => {
           {skus.edges.map(({ node: sku }) => (
             <MenuItem key={sku.id} sku={sku} stripePromise={stripePromise} />
           ))}
+          <TotalBox />
         </BodyContainer>
       )}
     />

@@ -1,0 +1,24 @@
+type Order {
+  items: [Item]
+  customerName: String
+  collection: CollectionSlot
+}
+
+type Item {
+  sku: String
+  name: String
+  order: Order
+  quantity: Int
+}
+
+type CollectionSlot {
+  date: String
+  time: Int
+  order: Order
+}
+
+type Query {
+  allOrders: [Order]
+  allItems: [Item]
+  allCollectionSlots: [CollectionSlot]
+}

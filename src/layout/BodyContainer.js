@@ -5,6 +5,7 @@ const BodyContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 300px;
   &:nth-child(1) {
     border-right: solid #666 2px;
   }
@@ -13,6 +14,7 @@ const BodyContainer = styled.div`
   }
   color: #666;
   padding: 1rem;
+  position: relative;
 `
 
 export default BodyContainer
