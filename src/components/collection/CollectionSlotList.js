@@ -32,12 +32,6 @@ const CollectionSlotList = props => {
       <DayNavigator />
       <SlotHolder>
         {daySlots.map(v => {
-          console.log("iter", v.date)
-          console.log("sele", state.collectionSlot)
-          console.log(
-            "v.date === state.collectionSlot",
-            v.date.toISOString() === state.collectionSlot?.toISOString()
-          )
           return (
             <CollectionSlot
               currentSlot={
