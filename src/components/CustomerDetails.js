@@ -73,8 +73,8 @@ const CustomerDetails = props => {
             })
           }
         />
-        <ConfirmationButton disabled={!formValidated} />
       </StyledForm>
+      <ConfirmationButton disabled={!formValidated} />
     </BodyContainer>
   )
 }

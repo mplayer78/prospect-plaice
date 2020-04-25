@@ -22,23 +22,32 @@ const SlotHolder = styled.div`
 
 const CollectionSlotList = props => {
   const { state, dispatch } = useContext(Context)
-  const [currentDate, setCurrentDate] = useState(dateId(new Date()))
   const [daySlots, setDaySlots] = useState([])
   useEffect(() => {
-    setDaySlots(createDaysCollectionSlots(new Date()))
-  }, [currentDate])
+    setDaySlots(createDaysCollectionSlots(state.currentSelectedDay))
+  }, [state])
   return (
     <BodyContainer>
       <BodyHeader>Collection Slots</BodyHeader>
       <DayNavigator />
       <SlotHolder>
-        {daySlots.map(v => (
-          <CollectionSlot
-            currentSlot={state.collectionSlot === v.date}
-            key={`${v.dateId}-${v.hour}:${v.minute}`}
-            {...v}
-          />
-        ))}
+        {daySlots.map(v => {
+          console.log("iter", v.date)
+          console.log("sele", state.collectionSlot)
+          console.log(
+            "v.date === state.collectionSlot",
+            v.date.toISOString() === state.collectionSlot?.toISOString()
+          )
+          return (
+            <CollectionSlot
+              currentSlot={
+                v.date.toISOString() === state.collectionSlot?.toISOString()
+              }
+              key={`${v.dateId}-${v.hour}:${v.minute}`}
+              {...v}
+            />
+          )
+        })}
       </SlotHolder>
     </BodyContainer>
   )

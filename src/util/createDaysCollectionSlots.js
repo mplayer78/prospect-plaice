@@ -13,13 +13,13 @@ export class CollectionSlot {
 // creates 5 minutes slots for every time between 1600 - 2000
 export function createDaysCollectionSlots(date, start = 960, end = 1200) {
   let daysCollectionSlots = []
-  console.log("date", date)
+  console.log("date", date.getFullYear(), date.getMonth(), date.getDate())
   for (let i = start; i <= end; i += 5) {
     let newSlot = new CollectionSlot(
       new Date(
         date.getFullYear(),
         date.getMonth(),
-        date.getDay(),
+        date.getDate(),
         Math.floor(i / 60),
         i % 60
       )

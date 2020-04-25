@@ -44,6 +44,20 @@ function reducer(state, action) {
         ...state,
         collectionSlot: action.date,
       }
+    case "increment_selected_day":
+      let { currentSelectedDay } = state
+      currentSelectedDay.setDate(currentSelectedDay.getDate() + 1)
+      return {
+        ...state,
+        currentSelectedDay,
+      }
+    case "decrement_selected_day":
+      let { currentSelectedDay: decDate } = state
+      decDate.setDate(decDate.getDate() - 1)
+      return {
+        ...state,
+        currentSelectedDay: decDate,
+      }
     default:
       return state
   }
