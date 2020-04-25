@@ -25,3 +25,17 @@ h2 {
   text-transform: uppercase;
   margin: 0.2rem;
 }
+
+h4 {
+  margin: 0rem 0;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: #333333;
+}
+
+h5 {
+  margin: 0rem 0;
+  font-weight: 400;
+  font-size: 14px;
+  color: #666666;
+}

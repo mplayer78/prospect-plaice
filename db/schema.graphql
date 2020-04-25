@@ -1,6 +1,7 @@
 type Order {
   items: [Item]
   customerName: String
+  collection: CollectionSlot
 }
 
 type Item {
@@ -10,7 +11,14 @@ type Item {
   quantity: Int
 }
 
+type CollectionSlot {
+  date: String
+  time: Int
+  order: Order
+}
+
 type Query {
   allOrders: [Order]
   allItems: [Item]
+  allCollectionSlots: [CollectionSlot]
 }

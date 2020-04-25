@@ -7,7 +7,10 @@ function reducer(state, action) {
       )
       let newItemList =
         foundItemIndex < 0
-          ? [...state.itemList, { sku: action.sku, quantity: 1 }]
+          ? [
+              ...state.itemList,
+              { sku: action.sku, price: action.price, quantity: 1 },
+            ]
           : state.itemList.map((v, i) =>
               i === foundItemIndex ? { ...v, quantity: v.quantity + 1 } : v
             )
@@ -37,11 +40,9 @@ function reducer(state, action) {
         [action.name]: action.value,
       }
     case "book_collection_slot":
-      let date = new Date()
-      console.log("date", date)
       return {
         ...state,
-        collectionSlot: new Date(),
+        collectionSlot: action.date,
       }
     default:
       return state

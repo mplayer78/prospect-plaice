@@ -19,6 +19,7 @@ import styled from "styled-components"
 
 const StyledBody = styled.div`
   display: flex;
+  flex-wrap: wrap;
 `
 
 const Layout = ({ children }) => {
