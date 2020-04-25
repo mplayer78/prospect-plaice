@@ -24,7 +24,6 @@ const ConfirmationButton = ({ disabled }) => {
   const { state, dispatch } = useContext(Context)
   console.log("state.itemList", state.itemList)
   const redirectToCheckout = async event => {
-    console.log("Hey!!")
     event.preventDefault()
     const stripe = await stripePromise
     const { error } = await stripe.redirectToCheckout({
