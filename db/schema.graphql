@@ -4,6 +4,7 @@ type Order {
   customerName: String
   customerPhoneNo: String
   collection: CollectionSlot
+  status: OrderStatus
 }
 
 type Item {
@@ -17,6 +18,14 @@ type Item {
 type CollectionSlot {
   date: String
   order: Order
+}
+
+enum OrderStatus {
+  UNFULFILLED
+  ORDERED
+  CANCELLED
+  PARTIALLYCOMPLETE
+  COMPLETE
 }
 
 type Query {

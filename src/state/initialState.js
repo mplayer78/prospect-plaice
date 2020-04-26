@@ -8,6 +8,8 @@ const initialState = {
   customerPhoneNo: "",
   customerEmail: "",
   currentSelectedDay: new Date(),
+  orders: [],
+  visibleOrders: [],
 }
 
 export default initialState

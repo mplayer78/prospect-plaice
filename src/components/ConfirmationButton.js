@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import Context from "../state/context"
-import { loadStripe } from "@stripe/stripe-js"
 import styled from "styled-components"
 import { useMutation, gql } from "@apollo/client"
 import { navigate } from "gatsby"
@@ -27,7 +26,6 @@ const CREATE_ORDER = gql`
     }
   }
 `
-const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
 const ConfirmationButton = ({ disabled }) => {
   const { state, dispatch } = useContext(Context)
@@ -44,26 +42,17 @@ const ConfirmationButton = ({ disabled }) => {
         date: state.collectionSlot,
       },
     },
+    status: "UNFULFILLED",
   }
 
   async function handleClick(e) {
-    e.preventDefault()
-    const result = await newOrder({ variables: { orderObject } })
-    navigate("/confirmOrder", {
-      state: result,
-    })
-  }
-  const redirectToCheckout = async event => {
-    event.preventDefault()
-    const stripe = await stripePromise
-    const { error } = await stripe.redirectToCheckout({
-      items: state.itemList,
-      successUrl: `${window.location.origin}/orderSuccess`,
-      cancelUrl: `${window.location.origin}/orderCancelled`,
-    })
-
-    if (error) {
-      console.warn("Error:", error)
+    try {
+      const result = await newOrder({ variables: { orderObject } })
+      navigate("/confirmOrder", {
+        state: result,
+      })
+    } catch (err) {
+      console.error(err)
     }
   }
 

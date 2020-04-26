@@ -63,6 +63,33 @@ function reducer(state, action) {
         ...state,
         currentSelectedDay: decDate,
       }
+    case "populate_orders":
+      return {
+        ...state,
+        orders: action.orders,
+        visibleOrders: action.orders,
+      }
+    case "filter_day":
+      const selDateString = state.currentSelectedDay.toDateString()
+      return {
+        ...state,
+        visibleOrders: state.orders.filter(v => {
+          const orderDateString = new Date(v.collection.date).toDateString()
+          return selDateString === orderDateString
+        }),
+      }
+    case "clear_filters":
+      return {
+        ...state,
+        visibleOrders: state.orders,
+      }
+    case "sort_by_date":
+      return {
+        ...state,
+        visibleOrders: state.visibleOrders.sort(
+          (a, b) => new Date(a.collection.date) - new Date(b.collection.date)
+        ),
+      }
     default:
       return state
   }

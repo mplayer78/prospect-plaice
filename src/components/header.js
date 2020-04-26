@@ -4,7 +4,7 @@ import React, { useContext } from "react"
 import Context from "../state/context"
 import FullHeader from "./FullHeader"
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, minimised }) => {
   const { state, dispatch } = useContext(Context)
   return (
     <header
@@ -18,10 +18,14 @@ const Header = ({ siteTitle }) => {
       }}
     >
       <FullHeader />
-      <h2 style={{ fontWeight: "400" }}>
-        Prospect Place, Sidmouth EX10 8AS, England
-      </h2>
-      <h2 style={{ fontWeight: "400" }}>+44 1395 519328</h2>
+      {!minimised && (
+        <>
+          <h2 style={{ fontWeight: "400" }}>
+            Prospect Place, Sidmouth EX10 8AS, England
+          </h2>
+          <h2 style={{ fontWeight: "400" }}>+44 1395 519328</h2>
+        </>
+      )}
     </header>
   )
 }
