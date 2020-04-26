@@ -28,10 +28,11 @@ const GET_ORDER = gql`
 `
 
 const ConfirmOrderPage = ({ location }) => {
-  const { _id } = location.state.data.createOrder
+  const { _id } = location.state?.data.createOrder
   const { loading, error, data } = useQuery(GET_ORDER, {
     variables: { id: _id },
   })
+  console.log("data", data)
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
   const {
@@ -57,7 +58,7 @@ const ConfirmOrderPage = ({ location }) => {
         <div className="order-details">
           your order:
           {orderItems.map(v => (
-            <span>
+            <span key={v.name}>
               {v.quantity} x {v.name} at £???
             </span>
           ))}
