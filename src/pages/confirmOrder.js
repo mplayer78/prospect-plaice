@@ -28,7 +28,7 @@ const GET_ORDER = gql`
 `
 
 const ConfirmOrderPage = ({ location }) => {
-  const { _id } = location.state?.data.createOrder
+  const _id = location.state?.data?.createOrder?._id
   const { loading, error, data } = useQuery(GET_ORDER, {
     variables: { id: _id },
   })
