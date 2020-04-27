@@ -17,6 +17,11 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    "gatsby-plugin-use-query-params",
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/orderSuccess/*`] },
+    },
     {
       resolve: `gatsby-source-stripe`,
       options: {

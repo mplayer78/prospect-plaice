@@ -73,7 +73,7 @@ const ConfirmOrderPage = ({ location }) => {
   const { loading, error, data } = useQuery(GET_ORDER, {
     variables: { id: _id },
   })
-  console.log("data", data)
+  console.log("_id, ", _id)
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
   const {
@@ -134,9 +134,8 @@ const ConfirmOrderPage = ({ location }) => {
           </VerticalLayout>
           <CheckoutButton
             orderItems={orderItems}
-            customerName={customerName}
+            orderId={_id}
             customerEmail={customerEmail}
-            customerPhoneNo={customerPhoneNo}
           >
             Press to Continue...
           </CheckoutButton>
