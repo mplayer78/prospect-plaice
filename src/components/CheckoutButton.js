@@ -1,5 +1,6 @@
 import React from "react"
 import { loadStripe } from "@stripe/stripe-js"
+import { ContinueButton } from "./ConfirmationButton"
 
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
 
@@ -10,7 +11,6 @@ const CheckoutButton = ({
   customerPhoneNo,
   children,
 }) => {
-  console.log("orderItems", orderItems)
   const redirectToCheckout = async event => {
     // event.preventDefault()
     const items = orderItems.map(({ sku, quantity }) => ({
@@ -31,7 +31,11 @@ const CheckoutButton = ({
       console.warn("Error:", error)
     }
   }
-  return <button onClick={() => redirectToCheckout()}>{children}</button>
+  return (
+    <ContinueButton onClick={() => redirectToCheckout()}>
+      {children}
+    </ContinueButton>
+  )
 }
 
 export default CheckoutButton

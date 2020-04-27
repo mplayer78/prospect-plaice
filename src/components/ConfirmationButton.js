@@ -9,7 +9,7 @@ const AlertText = styled.p`
   visibility: ${({ disabled }) => (disabled ? "visible" : "hidden")};
 `
 
-const ContinueButton = styled.button`
+export const ContinueButton = styled.button`
   border: none;
   outline: none;
   background-color: transparent;
@@ -45,6 +45,8 @@ const ConfirmationButton = ({ disabled }) => {
     status: "UNFULFILLED",
   }
 
+  console.log("orderObject", orderObject)
+
   async function handleClick(e) {
     try {
       const result = await newOrder({ variables: { orderObject } })
@@ -65,9 +67,6 @@ const ConfirmationButton = ({ disabled }) => {
       <ContinueButton disabled={disabled} onClick={e => handleClick(e)}>
         Press to Continue...
       </ContinueButton>
-      <button onClick={() => newOrder({ variables: { orderObject } })}>
-        Another Button
-      </button>
     </>
   )
 }

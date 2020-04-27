@@ -1,9 +1,50 @@
-import React, { useEffect } from "react"
+import React from "react"
 import Layout from "../components/layout"
 import { useQuery, gql } from "@apollo/client"
-import BodyContainer from "../layout/BodyContainer"
 import BodyHeader from "../layout/BodyHeader"
 import CheckoutButton from "../components/CheckoutButton"
+import formatPrice from "../util/formatPrice"
+import styled from "styled-components"
+import { twoSP } from "../util/twoSP"
+
+const ConfirmationContainer = styled.div`
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+`
+
+const Ticket = styled.div`
+  max-width: 500px;
+`
+
+const VerticalLayout = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  border-bottom: solid #999999 3px;
+  margin: 1rem;
+`
+
+const HorizontalLayout = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* border: solid red 2px; */
+  width: 100%;
+`
+
+const BodyText = styled.p`
+  font-weight: 400;
+  font-size: 18px;
+  margin: 0.5rem 1rem;
+`
+
+const BodyTextHeader = styled(BodyText)`
+  text-transform: uppercase;
+  color: #666666;
+`
 
 const GET_ORDER = gql`
   query Order($id: ID!) {
@@ -17,6 +58,7 @@ const GET_ORDER = gql`
           name
           quantity
           sku
+          price
         }
       }
       collection {
@@ -46,37 +88,60 @@ const ConfirmOrderPage = ({ location }) => {
   let collectionDate = new Date(date)
   return (
     <Layout>
-      <BodyContainer>
-        <BodyHeader>Order Confirmation</BodyHeader>
-        <div className="customer-details">
-          customer:
-          {customerName}
-          {customerPhoneNo}
-          {customerEmail}
-        </div>
-        <div className="order-details">
-          your order:
-          {orderItems.map(v => (
-            <span key={v.name}>
-              {v.quantity} x {v.name} at £???
-            </span>
-          ))}
-        </div>
-        <div className="total-price">£???</div>
-        <div className="collection-date">
-          to be collected on:
-          {collectionDate.toDateString()} at {collectionDate.getHours()}:
-          {collectionDate.getMinutes()}
-        </div>
-        <CheckoutButton
-          orderItems={orderItems}
-          customerName={customerName}
-          customerEmail={customerEmail}
-          customerPhoneNo={customerPhoneNo}
-        >
-          Place Order
-        </CheckoutButton>
-      </BodyContainer>
+      <ConfirmationContainer>
+        <Ticket>
+          <BodyHeader>Order Confirmation</BodyHeader>
+          <VerticalLayout>
+            <BodyTextHeader>customer details:</BodyTextHeader>
+            <BodyText style={{ textTransform: "uppercase" }}>
+              {customerName}
+            </BodyText>
+            <HorizontalLayout>
+              <BodyText>{customerPhoneNo}</BodyText>
+              <BodyText>{customerEmail}</BodyText>
+            </HorizontalLayout>
+          </VerticalLayout>
+          <VerticalLayout>
+            <BodyTextHeader>your order:</BodyTextHeader>
+            {orderItems.map(v => (
+              <HorizontalLayout key={v.name}>
+                <BodyText>
+                  {v.quantity} x {v.name}
+                </BodyText>
+                <BodyText>{formatPrice(v.quantity * v.price)}</BodyText>
+              </HorizontalLayout>
+            ))}
+          </VerticalLayout>
+          <VerticalLayout>
+            <HorizontalLayout>
+              <BodyTextHeader>total:</BodyTextHeader>
+              <BodyText style={{ fontWeight: "600" }}>
+                {formatPrice(
+                  orderItems.reduce(
+                    (acc, val) => acc + val.quantity * val.price,
+                    0
+                  )
+                )}
+              </BodyText>
+            </HorizontalLayout>
+          </VerticalLayout>
+          <VerticalLayout>
+            <BodyTextHeader>to be collected on:</BodyTextHeader>
+            <BodyText style={{ alignSelf: "flex-end", fontWeight: "600" }}>
+              {collectionDate.toDateString()} at {collectionDate.getHours()}:
+              {twoSP(collectionDate.getMinutes())}
+            </BodyText>
+          </VerticalLayout>
+          <CheckoutButton
+            orderItems={orderItems}
+            customerName={customerName}
+            customerEmail={customerEmail}
+            customerPhoneNo={customerPhoneNo}
+          >
+            Press to Continue...
+          </CheckoutButton>
+        </Ticket>
+      </ConfirmationContainer>
     </Layout>
   )
 }
