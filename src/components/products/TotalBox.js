@@ -7,13 +7,11 @@ const TotalBoxDiv = styled.div`
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
-  background: #fcfcfc33;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: #fcfcfc;
   display: flex;
   justify-content: space-between;
   padding-top: 1rem;
-  box-shadow: 0px -10px 10px #fcfcfc;
+  box-shadow: 0px -30px 30px #fcfcfc;
   color: #333333;
   h4 {
     text-transform: uppercase;
@@ -24,8 +22,8 @@ const TotalBoxDiv = styled.div`
   }
 `
 
-const TotalBox = props => {
-  const { state, dispatch } = useContext(Context)
+const TotalBox = () => {
+  const { state } = useContext(Context)
   const totalPrice = state.itemList.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
