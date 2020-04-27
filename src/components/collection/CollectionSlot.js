@@ -16,7 +16,7 @@ const CollectionSlotStyle = styled.button`
 `
 
 const CollectionSlot = ({ currentSlot, hour, minute, date }) => {
-  const { state, dispatch } = useContext(Context)
+  const { dispatch } = useContext(Context)
   return (
     <CollectionSlotStyle
       onClick={() => dispatch({ type: "book_collection_slot", date })}

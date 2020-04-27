@@ -1,5 +1,3 @@
-import { dateId } from "../util/dateId"
-
 const initialState = {
   itemList: [],
   totalCost: 0,

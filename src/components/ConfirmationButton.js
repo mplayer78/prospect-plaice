@@ -28,7 +28,7 @@ const CREATE_ORDER = gql`
 `
 
 const ConfirmationButton = ({ disabled }) => {
-  const { state, dispatch } = useContext(Context)
+  const { state } = useContext(Context)
   const [newOrder, { data }] = useMutation(CREATE_ORDER)
   const orderObject = {
     items: {

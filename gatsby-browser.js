@@ -3,11 +3,10 @@ import {
   ApolloClient,
   HttpLink,
   InMemoryCache,
-  gql,
   ApolloProvider,
 } from "@apollo/client"
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
     uri: "https://graphql.fauna.com/graphql",
