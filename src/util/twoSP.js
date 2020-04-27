@@ -1,3 +1,7 @@
 export function twoSP(number) {
-  return parseInt(number) < 10 ? "0" + parseInt(number) : number.toString()
+  let parsed = parseInt(number)
+  if (parsed || parsed === 0) {
+    return parsed < 10 ? "0" + parseInt(number) : number.toString()
+  }
+  return null
 }

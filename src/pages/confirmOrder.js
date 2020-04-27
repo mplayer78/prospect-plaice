@@ -7,18 +7,18 @@ import formatPrice from "../util/formatPrice"
 import styled from "styled-components"
 import { twoSP } from "../util/twoSP"
 
-const ConfirmationContainer = styled.div`
+export const ConfirmationContainer = styled.div`
   flex: 1;
   text-align: center;
   display: flex;
   justify-content: center;
 `
 
-const Ticket = styled.div`
+export const Ticket = styled.div`
   max-width: 500px;
 `
 
-const VerticalLayout = styled.section`
+export const VerticalLayout = styled.section`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -27,7 +27,7 @@ const VerticalLayout = styled.section`
   margin: 1rem;
 `
 
-const HorizontalLayout = styled.section`
+export const HorizontalLayout = styled.section`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -35,13 +35,13 @@ const HorizontalLayout = styled.section`
   width: 100%;
 `
 
-const BodyText = styled.p`
+export const BodyText = styled.p`
   font-weight: 400;
   font-size: 18px;
   margin: 0.5rem 1rem;
 `
 
-const BodyTextHeader = styled(BodyText)`
+export const BodyTextHeader = styled(BodyText)`
   text-transform: uppercase;
   color: #666666;
 `
