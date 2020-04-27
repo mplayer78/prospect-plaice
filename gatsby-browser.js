@@ -1,20 +1,6 @@
 import React from "react"
-import {
-  ApolloClient,
-  HttpLink,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client"
-
-export const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: new HttpLink({
-    uri: "https://graphql.fauna.com/graphql",
-    headers: {
-      authorization: `Bearer fnADqNok9eACC3wh80w5hdNCBXNv-WdBhtiA1lBK`,
-    },
-  }),
-})
+import { ApolloProvider } from "@apollo/client"
+import { client } from "./src/store/client"
 
 // Wraps every page in a component
 export const wrapPageElement = ({ element, props }) => {
