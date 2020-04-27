@@ -40,14 +40,8 @@ const Layout = ({ children, ...props }) => {
         minimised={props.minimised}
         siteTitle={data.site.siteMetadata.title}
       />
-      <div>
+      <div style={{ position: "relative" }}>
         <StyledBody oneColumn={props.oneColumn}>{children}</StyledBody>
-        <footer>
-          © {new Date().getFullYear()}, Built by{" "}
-          <a href="https://www.mattplayer.dev">Matt Player</a> with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
       </div>
     </Context.Provider>
   )
