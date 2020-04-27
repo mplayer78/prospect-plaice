@@ -14,6 +14,7 @@ import Context from "../state/context"
 import initialState from "../state/initialState"
 
 import Header from "./header"
+import "./normalize.css"
 import "./layout.css"
 import styled from "styled-components"
 
