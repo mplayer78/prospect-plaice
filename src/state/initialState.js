@@ -1,5 +1,3 @@
-import { dateId } from "../util/dateId"
-
 const initialState = {
   itemList: [],
   totalCost: 0,
@@ -8,6 +6,8 @@ const initialState = {
   customerPhoneNo: "",
   customerEmail: "",
   currentSelectedDay: new Date(),
+  orders: [],
+  visibleOrders: [],
 }
 
 export default initialState

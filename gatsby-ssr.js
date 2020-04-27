@@ -1,7 +1,13 @@
-/**
- * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/ssr-apis/
- */
+import React from "react"
+import { ApolloProvider } from "@apollo/client"
+import { renderToString } from "react-dom/server"
+import fetch from "isomorphic-fetch"
+import { client } from "./src/store/client"
 
-// You can delete this file if you're not using it
+export const replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
+  const ConnectedBody = () => (
+    <ApolloProvider client={client}>{bodyComponent}</ApolloProvider>
+  )
+
+  replaceBodyHTMLString(renderToString(<ConnectedBody />))
+}

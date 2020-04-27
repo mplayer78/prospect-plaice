@@ -73,7 +73,6 @@ const MenuItem = ({ sku, stripePromise }) => {
 
   let quantity = state.itemList.filter(items => items.sku === sku.id)?.[0]
     ?.quantity
-  console.log("quantity", quantity)
   return (
     <>
       <CardStyled>
@@ -84,7 +83,12 @@ const MenuItem = ({ sku, stripePromise }) => {
         <ActionsRow>
           <ButtonStyled
             onClick={event =>
-              dispatch({ type: "add_item", sku: sku.id, price: sku.price })
+              dispatch({
+                type: "add_item",
+                sku: sku.id,
+                price: sku.price,
+                name: sku.attributes.name,
+              })
             }
             primary
           >

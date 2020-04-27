@@ -1,20 +1,31 @@
 type Order {
-  items: [Item]
+  items: [Item] @relation
+  customerEmail: String
   customerName: String
+  customerPhoneNo: String
   collection: CollectionSlot
+  status: OrderStatus
 }
 
 type Item {
   sku: String
   name: String
-  order: Order
+  order: Order @relation
   quantity: Int
+  price: Int
 }
 
 type CollectionSlot {
   date: String
-  time: Int
   order: Order
+}
+
+enum OrderStatus {
+  UNFULFILLED
+  ORDERED
+  CANCELLED
+  PARTIALLYCOMPLETE
+  COMPLETE
 }
 
 type Query {

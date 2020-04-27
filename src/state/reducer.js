@@ -9,7 +9,12 @@ function reducer(state, action) {
         foundItemIndex < 0
           ? [
               ...state.itemList,
-              { sku: action.sku, price: action.price, quantity: 1 },
+              {
+                sku: action.sku,
+                price: action.price,
+                name: action.name,
+                quantity: 1,
+              },
             ]
           : state.itemList.map((v, i) =>
               i === foundItemIndex ? { ...v, quantity: v.quantity + 1 } : v
@@ -57,6 +62,33 @@ function reducer(state, action) {
       return {
         ...state,
         currentSelectedDay: decDate,
+      }
+    case "populate_orders":
+      return {
+        ...state,
+        orders: action.orders,
+        visibleOrders: action.orders,
+      }
+    case "filter_day":
+      const selDateString = state.currentSelectedDay.toDateString()
+      return {
+        ...state,
+        visibleOrders: state.orders.filter(v => {
+          const orderDateString = new Date(v.collection.date).toDateString()
+          return selDateString === orderDateString
+        }),
+      }
+    case "clear_filters":
+      return {
+        ...state,
+        visibleOrders: state.orders,
+      }
+    case "sort_by_date":
+      return {
+        ...state,
+        visibleOrders: state.visibleOrders.sort(
+          (a, b) => new Date(a.collection.date) - new Date(b.collection.date)
+        ),
       }
     default:
       return state

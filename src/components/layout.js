@@ -20,9 +20,10 @@ import styled from "styled-components"
 const StyledBody = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: ${({ oneColumn }) => (oneColumn ? "column" : "row")};
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, ...props }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -35,9 +36,12 @@ const Layout = ({ children }) => {
   let [state, dispatch] = useReducer(reducer, initialState)
   return (
     <Context.Provider value={{ state, dispatch }}>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header
+        minimised={props.minimised}
+        siteTitle={data.site.siteMetadata.title}
+      />
       <div>
-        <StyledBody>{children}</StyledBody>
+        <StyledBody oneColumn={props.oneColumn}>{children}</StyledBody>
         <footer>
           © {new Date().getFullYear()}, Built by{" "}
           <a href="https://www.mattplayer.dev">Matt Player</a> with
