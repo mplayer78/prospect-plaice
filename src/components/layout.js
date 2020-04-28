@@ -16,12 +16,18 @@ import initialState from "../state/initialState"
 import Header from "./header"
 import "./normalize.css"
 import "./layout.css"
-import styled from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 
 const StyledBody = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: ${({ oneColumn }) => (oneColumn ? "column" : "row")};
+`
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    padding: 20px;
+  }
 `
 
 const Layout = ({ children, ...props }) => {
@@ -37,6 +43,7 @@ const Layout = ({ children, ...props }) => {
   let [state, dispatch] = useReducer(reducer, initialState)
   return (
     <Context.Provider value={{ state, dispatch }}>
+      <GlobalStyle />
       <Header
         minimised={props.minimised}
         siteTitle={data.site.siteMetadata.title}

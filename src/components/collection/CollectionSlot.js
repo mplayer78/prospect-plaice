@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const CollectionSlotStyle = styled.div`
   border: ${({ currentSlot }) =>
-    currentSlot ? "transparent" : "solid 2px #999999"};
+    currentSlot ? "transparent" : "solid 2px var(--primary900)"};
   margin: 2px 0;
   padding: 4px;
   padding: 4px;
@@ -14,8 +14,10 @@ const CollectionSlotStyle = styled.div`
   font-weight: 600;
   font-size: 16px;
   line-height: 16px;
-  color: ${({ currentSlot }) => (currentSlot ? "var(--white)" : "#333333")};
-  background: ${({ currentSlot }) => (currentSlot ? "#333333" : "transparent")};
+  color: ${({ currentSlot }) =>
+    currentSlot ? "var(--white)" : "var(--primary300)"};
+  background: ${({ currentSlot }) =>
+    currentSlot ? "var(--primary300)" : "transparent"};
   outline: none;
   -webkit-appearance: none;
   -webkit-border-fit: border !important;

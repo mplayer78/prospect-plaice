@@ -12,7 +12,7 @@ const TotalBoxDiv = styled.div`
   justify-content: space-between;
   padding-top: 1rem;
   box-shadow: 0px -30px 30px #fcfcfc;
-  color: #333333;
+  color: var(--primary300);
   h4 {
     text-transform: uppercase;
     font-weight: 600;

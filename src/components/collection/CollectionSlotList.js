@@ -13,7 +13,7 @@ const SlotHolder = styled.div`
   flex-direction: column;
   max-height: 400px;
   overflow-y: scroll;
-  border: solid #999999 2px;
+  border: solid var(--primary900) 2px;
   padding: 2px;
   -webkit-box-shadow: inset 0px -20px 20px 0px var(--white);
   -moz-box-shadow: inset 0px -20px 20px 0px var(--white);

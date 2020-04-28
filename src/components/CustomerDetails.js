@@ -17,7 +17,7 @@ const StyledForm = styled.form`
     font-family: inherit;
     font-size: 1.2rem;
     background-color: none;
-    border: solid 2px #999999;
+    border: solid 2px var(--primary900);
   }
 `
 

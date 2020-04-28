@@ -23,7 +23,7 @@ export const VerticalLayout = styled.section`
   flex-direction: column;
   align-items: flex-start;
   flex: 1;
-  border-bottom: solid #999999 3px;
+  border-bottom: solid var(--primary900) 3px;
   margin: 1rem;
 `
 
@@ -43,7 +43,7 @@ export const BodyText = styled.p`
 
 export const BodyTextHeader = styled(BodyText)`
   text-transform: uppercase;
-  color: #666666;
+  color: var(--primary500);
 `
 
 const GET_ORDER = gql`
@@ -73,7 +73,7 @@ const ConfirmOrderPage = ({ location }) => {
   const { loading, error, data } = useQuery(GET_ORDER, {
     variables: { id: _id },
   })
-  console.log("_id, ", _id)
+  console.log("data", data)
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
   const {
