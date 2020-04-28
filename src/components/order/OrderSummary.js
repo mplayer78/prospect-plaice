@@ -8,6 +8,7 @@ const OrderSummaryStyled = styled.div`
   margin: 20px;
   padding-bottom: 20px;
   gap: 10px 10px;
+  opacity: ${({ unfulfilled }) => (unfulfilled ? "0.5" : "1")};
 `
 
 const OrderDetails = styled.div`
@@ -26,13 +27,14 @@ const CompleteButton = styled.button`
 
 const OrderSummary = props => {
   const collection = new Date(props.collection.date)
+  console.log("props", props)
   return (
-    <OrderSummaryStyled>
+    <OrderSummaryStyled unfulfilled={props.status === "UNFULFILLED"}>
       <p style={{ fontWeight: 600, fontSize: "2rem", margin: 0 }}>
         {collection.toLocaleTimeString()}
       </p>
       <CompleteButton>Mark Complete</CompleteButton>
-      <p>Order Pending</p>
+      <p>{props.status}</p>
       <OrderDetails>
         <p>{collection.toLocaleDateString()}</p>
         <p>{props.customerName}</p>
