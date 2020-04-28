@@ -11,15 +11,19 @@ const Header = ({ siteTitle, minimised }) => {
       style={{
         margin: `0 auto`,
         padding: `0`,
+        marginBottom: "20px",
+        paddingBotton: "20px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        borderBottom: "solid 2px #666666",
-        width: "90vw",
-        maxWidth: "500px",
+        borderBottom: "solid 2px var(--primary500)",
+        width: "100%",
       }}
     >
-      <FullHeader />
+      <div style={{ width: "min(500px, 100%)" }}>
+        <FullHeader />
+      </div>
+
       {!minimised && (
         <>
           <h2 style={{ fontWeight: "400", textAlign: "center" }}>

@@ -16,7 +16,7 @@ const IndexLayout = styled.div`
 
 const StyledLink = styled(Link)`
   font-size: 2rem;
-  color: #666666;
+  color: var(--primary500);
   pointer-events: cursor;
   text-align: center;
 `

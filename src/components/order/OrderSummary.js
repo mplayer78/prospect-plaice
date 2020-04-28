@@ -4,7 +4,7 @@ import styled from "styled-components"
 const OrderSummaryStyled = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  border-bottom: solid #999999 3px;
+  border-bottom: solid var(--primary900) 3px;
   margin: 20px;
   padding-bottom: 20px;
   gap: 10px 10px;
@@ -17,7 +17,7 @@ const OrderDetails = styled.div`
 
 const CompleteButton = styled.button`
   border: none;
-  background-color: #666666;
+  background-color: var(--primary500);
   color: var(--white);
   font-family: inherit;
   font-size: 1rem;
