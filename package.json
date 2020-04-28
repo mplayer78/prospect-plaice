@@ -8,6 +8,7 @@
     "@apollo/client": "^3.0.0-beta.44",
     "@apollo/react-hooks": "^3.1.5",
     "@stripe/stripe-js": "^1.4.0",
+    "babel-plugin-styled-components": "^1.10.7",
     "dotenv": "^8.2.0",
     "es6-promise": "^4.2.8",
     "gatsby": "^2.20.25",
