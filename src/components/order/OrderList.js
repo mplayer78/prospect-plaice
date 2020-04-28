@@ -21,6 +21,7 @@ const ALL_ORDERS = gql`
         collection {
           date
         }
+        status
       }
     }
   }

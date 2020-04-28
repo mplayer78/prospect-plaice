@@ -74,7 +74,7 @@ function reducer(state, action) {
       return {
         ...state,
         visibleOrders: state.orders.filter(v => {
-          const orderDateString = new Date(v.collection.date).toDateString()
+          const orderDateString = new Date(v.collection?.date).toDateString()
           return selDateString === orderDateString
         }),
       }
