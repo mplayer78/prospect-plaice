@@ -41,7 +41,8 @@ const SET_ORDER_PAID = gql`
 `
 
 const OrderSuccessPage = ({ location }) => {
-  let orderId = /\d+$/.exec(location.search)[0]
+  let orderSearch = /\d+$/.exec(location.search) ?? []
+  let orderId = orderSearch[0]
   const [setPaid, { loading, error, data }] = useMutation(SET_ORDER_PAID)
   const [orderInfo, setOrderInfo] = useState({})
   useEffect(() => {

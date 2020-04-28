@@ -9,18 +9,20 @@ const Header = ({ siteTitle, minimised }) => {
   return (
     <header
       style={{
-        margin: `1.45rem`,
-        padding: `1.45rem`,
+        margin: `0 auto`,
+        padding: `0`,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         borderBottom: "solid 2px #666666",
+        width: "90vw",
+        maxWidth: "500px",
       }}
     >
       <FullHeader />
       {!minimised && (
         <>
-          <h2 style={{ fontWeight: "400" }}>
+          <h2 style={{ fontWeight: "400", textAlign: "center" }}>
             Prospect Place, Sidmouth EX10 8AS, England
           </h2>
           <h2 style={{ fontWeight: "400" }}>+44 1395 519328</h2>

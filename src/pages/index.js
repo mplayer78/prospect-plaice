@@ -11,13 +11,14 @@ const IndexLayout = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30vh;
+  padding-top: 25vh;
 `
 
 const StyledLink = styled(Link)`
   font-size: 2rem;
   color: #666666;
   pointer-events: cursor;
+  text-align: center;
 `
 
 const IndexPage = props => {
