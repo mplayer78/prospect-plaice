@@ -9,6 +9,7 @@ const OrderSummaryStyled = styled.div`
   padding-bottom: 20px;
   gap: 10px 10px;
   opacity: ${({ unfulfilled }) => (unfulfilled ? "0.5" : "1")};
+  justify-content: center;
 `
 
 const OrderDetails = styled.div`
@@ -25,6 +26,18 @@ const CompleteButton = styled.button`
   max-width: 30%;
 `
 
+const OrderStatus = styled.p`
+  font-weight: 600;
+  font-size: ${({ unfulfilled }) => (unfulfilled ? "14px" : "24px")};
+  margin: 0;
+  text-align: center;
+  align-self: baseline;
+  background-color: ${({ unfulfilled }) =>
+    unfulfilled ? "transparent" : "green"};
+  color: ${({ unfulfilled }) => (unfulfilled ? "black" : "white")};
+  padding: 5px;
+`
+
 const OrderSummary = props => {
   const collection = new Date(props.collection.date)
   console.log("props", props)
@@ -34,7 +47,9 @@ const OrderSummary = props => {
         {collection.toLocaleTimeString()}
       </p>
       <CompleteButton>Mark Complete</CompleteButton>
-      <p>{props.status}</p>
+      <OrderStatus unfulfilled={props.status === "UNFULFILLED"}>
+        {props.status}
+      </OrderStatus>
       <OrderDetails>
         <p>{collection.toLocaleDateString()}</p>
         <p>{props.customerName}</p>
