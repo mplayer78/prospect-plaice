@@ -27,7 +27,7 @@ const IndexPage = props => {
       <SEO title="Home" />
       <IndexLayout>
         <ProspectLogo />
-        <StyledLink to="menu">Order Food For Collection</StyledLink>
+        <StyledLink to="menu">Order Delicious Food For Collection</StyledLink>
       </IndexLayout>
     </Layout>
   )
