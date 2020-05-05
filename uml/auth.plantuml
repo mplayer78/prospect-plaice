@@ -1,0 +1,25 @@
+@startuml
+actor User
+participant Menu
+participant Cart
+participant Auth
+database Database
+actor StripePayment
+User -> Menu
+Menu -> Cart: AddItem()
+Cart -> Auth: Checkout()
+Auth -> Database: CreateUser()
+Database --> Auth: Token
+Auth -> Cart: SetTokenOnHeader()
+Cart -> StripePayment: RedirectToPayment()
+alt payment successful
+
+  StripePayment --> Cart: Payment Token
+  Cart -> Database: SetTransactionPaid()
+  StripePayment --> Cart: Order Success
+
+else payment unsuccessfil
+  StripePayment --> Cart: Payment Unsuccessful
+  end
+
+@enduml

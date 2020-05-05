@@ -1,0 +1,15 @@
+Update(Function("create_user"), {
+  body: Query(
+    Lambda(
+      ["input"],
+      Create(Collection("User"), {
+        data: {
+          username: Select("username", Var("input"), ""),
+          role: "PATRON",
+        },
+      })
+    )
+  ),
+})
+
+Temp Key fnADrBPzVuACAsy6HBon59G-1lJPr-ryRrEa96GY
