@@ -25,10 +25,27 @@ const IndexPage = props => {
   return (
     <Layout oneColumn>
       <SEO title="Home" />
-      <IndexLayout>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          paddingTop: "25vh",
+        }}
+      >
         <ProspectLogo />
-        <StyledLink to="/menu">Order Delicious Food For Collection</StyledLink>
-      </IndexLayout>
+        <Link
+          style={{
+            fontSize: "2rem",
+            color: "#666666",
+            pointerEvents: "cursor",
+            textAlign: "center",
+          }}
+          to="/menu"
+        >
+          Order Delicious Food For Collection
+        </Link>
+      </div>
     </Layout>
   )
 }

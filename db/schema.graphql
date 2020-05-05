@@ -7,6 +7,27 @@ type Order {
   status: OrderStatus
 }
 
+type User {
+  userName: String! @unique
+  userRole: UserRole!
+}
+
+input CreateUserInput {
+  userName: String
+  password: String
+  role: UserRole!
+}
+
+input LoginUserInput {
+  userName: String!
+  password: String!
+}
+
+enum UserRole {
+  PATRON
+  SHOP_ADMIN
+}
+
 type Item {
   sku: String
   name: String
@@ -32,4 +53,9 @@ type Query {
   allOrders: [Order]
   allItems: [Item]
   allCollectionSlots: [CollectionSlot]
+}
+
+type Mutation {
+  createUser(input: CreateUserInput): User! @resolver(name: "create_user")
+  loginUser(input: LoginUserInput): String! @resolver(name: "login_user")
 }

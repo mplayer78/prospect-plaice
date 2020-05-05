@@ -8,7 +8,8 @@ const OrderSummaryStyled = styled.div`
   margin: 20px;
   padding-bottom: 20px;
   gap: 10px 10px;
-  opacity: ${({ unfulfilled }) => (unfulfilled ? "0.5" : "1")};
+  opacity: ${({ unfulfilled, complete }) =>
+    unfulfilled || complete ? "0.5" : "1"};
   justify-content: center;
 `
 
@@ -40,13 +41,17 @@ const OrderStatus = styled.p`
 
 const OrderSummary = props => {
   const collection = new Date(props.collection.date)
-  console.log("props", props)
   return (
-    <OrderSummaryStyled unfulfilled={props.status === "UNFULFILLED"}>
+    <OrderSummaryStyled
+      unfulfilled={props.status === "UNFULFILLED"}
+      complete={props.status === "COMPLETE"}
+    >
       <p style={{ fontWeight: 600, fontSize: "2rem", margin: 0 }}>
         {collection.toLocaleTimeString()}
       </p>
-      <CompleteButton>Mark Complete</CompleteButton>
+      <CompleteButton onClick={() => props.markComplete(props._id)}>
+        Mark Complete
+      </CompleteButton>
       <OrderStatus unfulfilled={props.status === "UNFULFILLED"}>
         {props.status}
       </OrderStatus>
@@ -59,7 +64,9 @@ const OrderSummary = props => {
         {props.items.data.map(v => (
           <div key={v.sku}>
             <input type="checkbox" id={v.sku} name={v.name} value={v.sku} />
-            <label htmlFor={v.sku}>{v.name}</label>
+            <label htmlFor={v.sku}>
+              {v.quantity} x {v.name}
+            </label>
           </div>
         ))}
       </div>

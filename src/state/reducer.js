@@ -73,10 +73,19 @@ function reducer(state, action) {
       const selDateString = state.currentSelectedDay.toDateString()
       return {
         ...state,
-        visibleOrders: state.orders.filter(v => {
+        visibleOrders: state.visibleOrders.filter(v => {
           const orderDateString = new Date(v.collection?.date).toDateString()
           return selDateString === orderDateString
         }),
+      }
+    case "filter_complete":
+      console.log(
+        "state.visibleOrders",
+        state.visibleOrders.filter(v => v.status !== "COMPLETE")
+      )
+      return {
+        ...state,
+        visibleOrders: state.visibleOrders.filter(v => v.status !== "COMPLETE"),
       }
     case "clear_filters":
       return {

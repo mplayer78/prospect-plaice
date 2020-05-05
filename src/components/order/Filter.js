@@ -26,10 +26,8 @@ const Filter = props => {
   return (
     <FilterBox>
       <FancyButton onClick={() => dispatch({ type: "clear_filters" })}>
-        Show All Days
+        Clear All Filters
       </FancyButton>
-      <FancyButton>Show All Status</FancyButton>
-      <FancyButton>Show Only Completed</FancyButton>
       <FancyButton style={{ flex: 1 }}>
         <button
           onClick={() => {
